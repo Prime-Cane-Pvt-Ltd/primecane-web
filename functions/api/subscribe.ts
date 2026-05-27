@@ -84,13 +84,17 @@ export const onRequest: PagesFunction<Env> = async ({ request, env }) => {
   const key = `email:${email}`;
   if (await env.SIGNUPS.get(key)) return json(200, { status: "duplicate" });
 
+  const ts = new Date().toISOString();
   await env.SIGNUPS.put(
     key,
     JSON.stringify({
       email,
-      ts: new Date().toISOString(),
+      ts,
       ua: request.headers.get("user-agent")?.slice(0, 200) ?? "",
     }),
+    // Store the signup time as KV metadata so the export endpoint can list the
+    // whole list (with dates) in one call, without a read per subscriber.
+    { metadata: { ts } },
   );
   return json(200, { status: "subscribed" });
 };
