@@ -48,19 +48,34 @@ Outputs: `src/assets/hero/*` (responsive WebP/JPEG + LQIP blur) and `public/*`
 Edit the single constant `LAUNCH_DATE` in `src/lib/constants.ts`. The countdown and the
 screen-reader summary both derive from it.
 
-## ⚠️ Before launch — required
+## Signup storage & retrieval
 
-1. **Bind the signup KV namespace.** In the Cloudflare dashboard:
-   *Pages → this project → Settings → Functions → KV namespace bindings* → add a binding
-   with variable name **`SIGNUPS`**. **Until this is bound, signups are accepted by the
-   form but NOT stored** (the function logs an error and returns success so the page
-   stays functional). Verify a test signup appears in KV before going public.
-2. *(Recommended)* Add a **Cloudflare WAF Rate Limiting rule** on `/api/subscribe`. The
-   built-in KV counter in the function is best-effort only (KV is eventually consistent).
-3. Confirm the production domain is `primecane.com` (preview `*.pages.dev` deploys are
-   `noindex`-ed automatically via `functions/_middleware.ts`).
-4. Optionally point the form at a different provider by setting `VITE_SIGNUP_ENDPOINT`
-   (see `.env.example`).
+Signups are stored in a Cloudflare **KV namespace** bound as `SIGNUPS`, keyed by
+`email:<address>` (deduplicated) with the signup time in metadata.
+
+**Two one-time setup steps in the Cloudflare dashboard** (Pages → `primecane-web`):
+
+1. **Bind KV** — *Settings → Bindings (Functions) → KV namespace* → create/select a
+   namespace and bind it with the variable name **`SIGNUPS`**.
+   *Until this is bound, signups are accepted by the form but NOT stored* (the function
+   logs an error and still returns success so the page never looks broken).
+2. **Set the admin key** — *Settings → Variables and Secrets* → add a **secret** named
+   **`ADMIN_KEY`** with a long random value. This protects the export below.
+
+### Where the emails are
+- **Quick view:** Cloudflare dashboard → *Storage & Databases → KV →* the `SIGNUPS`
+  namespace → every `email:…` key is one subscriber.
+- **Download a CSV (recommended):** open
+  `https://primecane.com/api/subscribers?key=YOUR_ADMIN_KEY` in a browser — it downloads
+  `primecane-signups.csv` (email + signup date). Add `&format=json` for JSON.
+
+## Also recommended before launch
+- Add a **Cloudflare WAF Rate Limiting rule** on `/api/subscribe` (the in-function KV
+  counter is best-effort only — KV is eventually consistent).
+- Confirm the production domain is `primecane.com` (preview `*.pages.dev` deploys are
+  `noindex`-ed automatically via `functions/_middleware.ts`).
+- Optionally point the form at a different provider via `VITE_SIGNUP_ENDPOINT`
+  (see `.env.example`).
 
 ## Project layout
 
