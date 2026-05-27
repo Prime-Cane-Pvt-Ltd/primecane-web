@@ -25,6 +25,7 @@ import pngToIco from "png-to-ico";
 const ROOT = new URL("..", import.meta.url).pathname;
 const SRC_LOGOS = join(ROOT, "src/assets/logos");
 const OUT_HERO = join(ROOT, "src/assets/hero");
+const OUT_PRODUCTS = join(ROOT, "src/assets/products");
 const OUT_PUBLIC = join(ROOT, "public");
 
 const GREEN = "#184D2A";
@@ -94,6 +95,48 @@ async function buildHero() {
       `export const heroAspectRatio = ${ratio.toFixed(4)};\n`,
   );
   log(`blur.ts (${(lqip.length / 1024).toFixed(1)}KB inlined)`);
+}
+
+/* ------------------------------------------------------------------ */
+/* 1b. FLAGSHIP PRODUCT (packaged sugar, page 3 — transparent cut-out) */
+/* ------------------------------------------------------------------ */
+async function buildSugarPack() {
+  console.log("\n• Flagship product (sugar pack)");
+  mkdirSync(OUT_PRODUCTS, { recursive: true });
+
+  const work = join(tmpdir(), "pc-pack");
+  rmSync(work, { recursive: true, force: true });
+  mkdirSync(work, { recursive: true });
+  // Page 3 holds the packaging renders; object 6 is the angled 2kg bag, with
+  // its soft mask (object 7) immediately after — extracted as p-000 / p-001.
+  execFileSync("pdfimages", ["-png", "-f", "3", "-l", "3", HERO_PDF, join(work, "p")]);
+  const rgb = join(work, "p-000.png");
+  const mask = join(work, "p-001.png");
+  if (!existsSync(rgb) || !existsSync(mask)) {
+    throw new Error("Could not extract the sugar-pack image + mask from page 3");
+  }
+
+  // Apply the PDF soft mask (white = bag, black = background) as the alpha
+  // channel → true transparent cut-out. rgb is opaque 3-channel; the mask is
+  // forced to exactly match its dimensions as a single raw channel.
+  const { width, height } = await sharp(rgb).metadata();
+  const maskBuf = await sharp(mask)
+    .greyscale()
+    .resize(width, height, { fit: "fill" })
+    .raw()
+    .toBuffer();
+  const cut = await sharp(rgb)
+    .joinChannel(maskBuf, { raw: { width, height, channels: 1 } })
+    .png() // clean RGBA intermediate
+    .toBuffer();
+
+  await sharp(cut)
+    .resize({ width: 600, withoutEnlargement: true })
+    .webp({ quality: 86, alphaQuality: 100, effort: 6 })
+    .toFile(join(OUT_PRODUCTS, "sugar-pack.webp"));
+  const meta = await sharp(join(OUT_PRODUCTS, "sugar-pack.webp")).metadata();
+  if (!meta.hasAlpha) throw new Error("sugar-pack.webp lost its alpha channel");
+  log(`sugar-pack.webp (${meta.width}x${meta.height}, transparent)`);
 }
 
 /* ------------------------------------------------------------------ */
@@ -180,6 +223,7 @@ async function buildOgCard() {
 async function main() {
   console.log("Prime Cane — processing brand assets");
   await buildHero();
+  await buildSugarPack();
   await buildFavicons();
   await buildOgCard();
   console.log("\n✓ Assets ready.\n");

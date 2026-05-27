@@ -1,10 +1,40 @@
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import type { Variants } from "motion/react";
 import { Reveal } from "@/components/Reveal";
 import { Eyebrow } from "@/components/Eyebrow";
 import { Marquee } from "@/components/Marquee";
 import { container, inView } from "@/lib/motion";
 import { PRODUCTS, PRODUCTS_SECTION, type Product } from "@/lib/constants";
+import sugarPack from "@/assets/products/sugar-pack.webp";
+
+/** Flagship product render — the real 2kg White Sugar pack, gently floating. */
+function FlagshipPack() {
+  const reduce = useReducedMotion();
+  return (
+    <motion.div
+      className="relative flex justify-center"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={inView}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {/* Soft lime pedestal glow */}
+      <span
+        aria-hidden="true"
+        className="absolute left-1/2 top-1/2 h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full bg-lime/30 blur-3xl"
+      />
+      <motion.img
+        src={sugarPack}
+        alt="Prime Cane 2kg White Sugar packaging"
+        width={529}
+        height={661}
+        className="relative h-auto w-[clamp(180px,42vw,300px)] [filter:drop-shadow(0_24px_40px_rgba(15,52,28,0.35))]"
+        animate={reduce ? undefined : { y: [0, -12, 0] }}
+        transition={{ duration: 5, ease: "easeInOut", repeat: Infinity }}
+      />
+    </motion.div>
+  );
+}
 
 /* Simple brand line-icons (green stroke), keyed by product id. */
 const ICON_PATHS: Record<string, string[]> = {
@@ -76,6 +106,22 @@ export function Products() {
               {PRODUCTS_SECTION.heading}
             </h2>
           </Reveal>
+        </div>
+
+        {/* Flagship product — the real packaged sugar (spec §3, "Sugar — the heart of the mill") */}
+        <div className="mt-14 grid items-center gap-10 md:mt-16 md:grid-cols-2 md:gap-16">
+          <Reveal>
+            <p className="eyebrow text-green/70">Our flagship</p>
+            <h3 className="mt-3 font-display text-3xl font-light text-ink sm:text-4xl">
+              2kg White Sugar
+            </h3>
+            <p className="mt-4 max-w-md leading-relaxed text-ink/65">
+              Pure, naturally processed cane sugar — milled and packed right here in
+              Chiredzi. The first product off the line, and the heart of the mill.
+            </p>
+            <p className="eyebrow mt-5 text-green">Pure · Natural · Trusted</p>
+          </Reveal>
+          <FlagshipPack />
         </div>
 
         <motion.div
