@@ -1,6 +1,32 @@
+# dependencies
 node_modules/
+
+# build output
 dist/
 .astro/
+
+# env / secrets
 .env
 .env.*
 !.env.example
+
+# local tooling
+.wrangler/
+*.log
+.DS_Store
+
+# internal build spec — never track
+primecane-coming-soon-spec.md
+
+# internal planning / agent docs — never track
+docs/superpowers/
+.claude/
+CLAUDE.md
+GEMINI.md
+AGENTS.md
+*.plan.md
+
+# test artifacts
+test-results/
+playwright-report/
+playwright/.cache/

@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/*  Prime Cane brand tokens (spec §2.1 / §2.2)                         */
+/*  Defined CSS-first per Tailwind v4 — generates utilities directly.  */
+/* ------------------------------------------------------------------ */
+@theme {
+  /* Brand greens */
+  --color-green: #184d2a; /* primary brand green */
+  --color-green-deep: #0f341c; /* gradients / dark sections */
+  --color-green-night: #0a2414; /* deepest backgrounds */
+
+  /* Accent + surfaces */
+  --color-lime: #d7df23; /* CTAs, highlights, cane disc */
+  --color-cream: #fdfdfd; /* light surfaces */
+  --color-ink: #163a25; /* body text on light */
+  --color-mist: #7c8c7e; /* muted / secondary text */
+
+  /* Supporting tints */
+  --color-green-100: #e7ece4;
+  --color-lime-soft: #eaefa0;
+  --color-field-gold: #e0a33a; /* sunset accent — imagery only */
+
+  /* Type families (self-hosted via @fontsource-variable) */
+  --font-display: "Fraunces Variable", ui-serif, Georgia, "Times New Roman", serif;
+  --font-body: "Hanken Grotesk Variable", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+
+  /* Ambient motion durations */
+  --animate-glow: glow 6s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.12);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Base layer                                                         */
+/* ------------------------------------------------------------------ */
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    font-family: var(--font-body);
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    /* Reserve the scrollbar gutter so the page doesn't reflow (CLS) when
+       below-the-fold content loads and the scrollbar appears. */
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-green-night);
+    color: var(--color-cream);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  /* Visible, branded focus ring for keyboard users (a11y, spec §7D) */
+  :focus-visible {
+    outline: 2px solid var(--color-lime);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Honour reduced-motion globally (spec §6.3) */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Small uppercase letter-spaced "eyebrow" label helper (spec §2.2) */
+@utility eyebrow {
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
