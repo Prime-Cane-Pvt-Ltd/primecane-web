@@ -22,9 +22,9 @@ export const HERO = {
   eyebrow: "Sustainable Agricultural Solutions",
   headline: "Zimbabwe's sugar, refined from the ground up.",
   subline:
-    "Prime Cane (Pvt) Ltd is building a modern sugar mill in Chiredzi — processing cane into sugar, ethanol and more. Our website is on its way.",
+    "Prime Cane (Pvt) Ltd is building a modern sugar mill in Chiredzi, processing cane into sugar, ethanol and more. Our website is on its way.",
   formIntro: "Be the first to know when we go live.",
-  reassurance: "No spam — one email, at launch.",
+  reassurance: "No spam, one email, at launch.",
 } as const;
 
 export const MILL = {
@@ -32,7 +32,7 @@ export const MILL = {
   statement: "A new chapter for Zimbabwean cane.",
   paragraph:
     "Prime Cane is establishing an integrated milling and processing operation in the heart of Zimbabwe's sugar belt. From raw cane to refined product, every stage is built for quality, sustainability and the communities the industry supports.",
-  chips: ["Sugar belt — Chiredzi", "Integrated processing", "Sustainable by design"],
+  chips: ["Sugar belt, Chiredzi", "Integrated processing", "Sustainable by design"],
 } as const;
 
 export interface Product {
@@ -45,7 +45,7 @@ export const PRODUCTS: readonly Product[] = [
   {
     id: "sugar",
     name: "Sugar",
-    description: "Pure, naturally processed cane sugar — the heart of the mill.",
+    description: "Pure, naturally processed cane sugar, the heart of the mill.",
   },
   {
     id: "ethanol",
@@ -60,7 +60,7 @@ export const PRODUCTS: readonly Product[] = [
   {
     id: "byproducts",
     name: "Cane By-Products",
-    description: "Bagasse and more — nothing from the crop is wasted.",
+    description: "Bagasse and more, nothing from the crop is wasted.",
   },
 ];
 
@@ -74,7 +74,7 @@ export const CHIREDZI = {
   eyebrow: "Our Home",
   heading: "Built in the Lowveld.",
   paragraph:
-    "Chiredzi sits at the centre of Zimbabwe's sugar industry — the natural home for a mill built to grow with the region. We're proud to be putting down roots here.",
+    "Chiredzi sits at the centre of Zimbabwe's sugar industry, the natural home for a mill built to grow with the region. We're proud to be putting down roots here.",
 } as const;
 
 export const FOOTER = {

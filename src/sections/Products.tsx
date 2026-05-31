@@ -116,7 +116,7 @@ export function Products() {
               2kg White Sugar
             </h3>
             <p className="mt-4 max-w-md leading-relaxed text-ink/65">
-              Pure, naturally processed cane sugar — milled and packed right here in
+              Pure, naturally processed cane sugar, milled and packed right here in
               Chiredzi. The first product off the line, and the heart of the mill.
             </p>
             <p className="eyebrow mt-5 text-green">Pure · Natural · Trusted</p>

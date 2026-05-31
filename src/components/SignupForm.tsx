@@ -99,7 +99,7 @@ export function SignupForm() {
             </span>
             <p className="text-sm text-cream">
               {status === "duplicate"
-                ? "You're already on the list — we'll be in touch at launch."
+                ? "You're already on the list, we'll be in touch at launch."
                 : "You're on the list. We'll email you once, at launch."}
             </p>
           </motion.div>
