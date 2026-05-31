@@ -2,392 +2,264 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Martin — Out of Office (Weekend)</title>
+<title>Martin, Out of Office (Weekend)</title>
 <style>
-  *, *::before, *::after { box-sizing: border-box; }
-
-  body {
-    margin: 0;
-    background: #eef1eb;
-    padding: 48px 24px 64px;
-    font-family: Arial, Helvetica, sans-serif;
-    min-height: 100vh;
-  }
-
-  .wrapper {
-    max-width: 660px;
-    margin: 0 auto;
-  }
-
-  /* ── Install instructions ── */
-  .hint {
-    background: #fff;
-    border: 1px solid #d4ddd1;
-    border-radius: 10px;
-    padding: 18px 22px;
-    font-size: 13px;
-    color: #4a5a4d;
-    line-height: 1.7;
-    margin-bottom: 32px;
-    animation: fadeSlideDown 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
+  body { background: #f0f2ee; padding: 40px; font-family: Arial, sans-serif; }
+  .hint { max-width: 620px; margin: 0 auto 24px; background: #fff; border: 1px solid #d0d8ce;
+    border-radius: 10px; padding: 18px 22px; font-size: 13px; color: #4a5a4d; line-height: 1.6; }
   .hint b { color: #184d2a; }
-  .hint ol { margin: 10px 0 0 18px; padding: 0; }
-  .hint li { margin-bottom: 4px; }
-  .hint code {
-    background: #eef2ec;
-    padding: 1px 6px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-family: 'Courier New', monospace;
-  }
-
-  /* ── Animated container ── */
-  .preview {
-    max-width: 640px;
-  }
-
-  /* ── OOO Banner ── */
-  .ooo-banner {
-    background: #f5faed;
-    border-left: 4px solid #d7df23;
-    border-radius: 0 8px 8px 0;
-    padding: 16px 20px;
-    margin-bottom: 14px;
-    animation: fadeSlideDown 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
-  }
-  .ooo-badge {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.8px;
-    text-transform: uppercase;
-    color: #184d2a;
-    margin-bottom: 7px;
-  }
-  .ooo-body {
-    font-size: 13px;
-    line-height: 1.65;
-    color: #3a4a3d;
-    margin: 0 0 8px 0;
-  }
-  .ooo-phone {
-    font-size: 12px;
-    color: #4a5a4d;
-  }
-  .ooo-phone a {
-    color: #163a25;
-    font-weight: 700;
-    text-decoration: none;
-    white-space: nowrap;
-  }
-  .ooo-phone a:hover { text-decoration: underline; }
-
-  /* ── Card ── */
-  .card {
-    border-radius: 14px;
-    overflow: hidden;
-    border: 1px solid #e3e9e1;
-    background: #fff;
-    display: flex;
-    flex-direction: column;
-    animation: fadeSlideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
-    box-shadow: 0 2px 12px rgba(24,77,42,0.07);
-  }
-
-  .card-body {
-    display: flex;
-    flex-direction: row;
-  }
-
-  /* Left green panel */
-  .card-left {
-    width: 160px;
-    flex-shrink: 0;
-    background-color: #184d2a;
-    background-image: url('../pc-band.png');
-    background-position: left top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 28px 18px;
-    text-align: center;
-  }
-  .card-left img {
-    display: block;
-    width: 120px;
-    height: 116px;
-  }
-
-  /* Right content */
-  .card-right {
-    flex: 1;
-    padding: 28px 28px 24px;
-  }
-
-  .sig-name {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 20px;
-    line-height: 24px;
-    font-weight: 700;
-    color: #163a25;
-    margin: 0;
-  }
-  .sig-title {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.8px;
-    text-transform: uppercase;
-    color: #5c8a45;
-    margin: 5px 0 0;
-  }
-  .sig-company {
-    font-size: 11px;
-    color: #7c8c7e;
-    margin: 3px 0 0;
-  }
-
-  .divider {
-    width: 40px;
-    height: 2px;
-    background: #d7df23;
-    margin: 14px 0;
-    border: none;
-  }
-
-  .contacts {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  .contacts li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .contacts li img {
-    width: 14px;
-    height: 14px;
-    flex-shrink: 0;
-  }
-  .contacts .email a {
-    font-size: 12px;
-    color: #236b35;
-    text-decoration: none;
-    font-weight: 700;
-  }
-  .contacts .phone {
-    font-size: 13px;
-    line-height: 17px;
-  }
-  .contacts .phone a {
-    color: #163a25;
-    text-decoration: none;
-    font-weight: 700;
-  }
-  .contacts .phone a:hover { text-decoration: underline; }
-  .contacts .phone .sep { color: #c0ccc2; }
-  .contacts .web a {
-    font-size: 12px;
-    color: #3a4a3d;
-    text-decoration: none;
-  }
-  .contacts .location span {
-    font-size: 11px;
-    color: #90a092;
-  }
-
-  .socials {
-    display: flex;
-    gap: 12px;
-    padding-top: 14px;
-  }
-  .socials a { display: block; }
-  .socials img {
-    width: 17px;
-    height: 17px;
-    display: block;
-    transition: opacity 0.15s ease;
-  }
-  .socials a:hover img { opacity: 0.75; }
-
-  /* Bottom strip */
-  .card-strip {
-    background-color: #184d2a;
-    background-image: url('../pc-strip.png');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 12px 24px;
-    display: flex;
-    align-items: center;
-    gap: 0;
-  }
-  .strip-item {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.4px;
-    text-transform: uppercase;
-    color: #d7df23;
-    white-space: nowrap;
-  }
-  .strip-dot {
-    font-size: 10px;
-    color: #5f8a52;
-    padding: 0 5px;
-  }
-  .strip-spacer { flex: 1; }
-  .strip-tagline {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 11px;
-    font-style: italic;
-    color: #bcd49a;
-    white-space: nowrap;
-  }
-
-  /* ── Animations ── */
-  @keyframes fadeSlideDown {
-    from { opacity: 0; transform: translateY(-10px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeSlideUp {
-    from { opacity: 0; transform: translateY(12px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .hint, .ooo-banner, .card { animation: none; }
-  }
-
-  @media (prefers-color-scheme: dark) {
-    body { background: #0a140b; }
-    .hint { background: #122318; border-color: #1e3d26; color: #b6cebc; }
-    .hint b { color: #8ec97a; }
-    .hint code { background: #1a3321; color: #c8d8c8; }
-    .ooo-banner { background: #0d1f0e; border-color: #2b5639; }
-    .ooo-badge { color: #d7df23; }
-    .ooo-body { color: #b6cebc; }
-    .ooo-phone { color: #8aab91; }
-    .ooo-phone a { color: #8ec97a; }
-    .card { background: #122318; border-color: #1e3d26; box-shadow: 0 2px 16px rgba(0,0,0,0.4); }
-    .card-right { background: #122318; }
-    .sig-name { color: #ffffff; }
-    .sig-title { color: #8ec97a; }
-    .sig-company { color: #8aab91; }
-    .contacts .email a { color: #8ec97a; }
-    .contacts .phone a { color: #c8d8c8; }
-    .contacts .web a { color: #b6cebc; }
-    .contacts .location span { color: #7a9880; }
-  }
+  .hint ol { margin: 10px 0 0 18px; }
+  .hint code { background: #eef2ec; padding: 1px 5px; border-radius: 4px; font-size: 12px; }
+  .preview { max-width: 620px; margin: 0 auto; }
 </style>
 </head>
 <body>
 
-<div class="wrapper">
+<div class="hint">
+  <b>How to set up in Zoho Mail (Out of Office)</b>
+  <ol>
+    <li>Sign in at <code>mail.zoho.com</code> as <code>martinm@primecane.com</code></li>
+    <li>Settings (⚙) → <b>Out of Office</b> → <b>Add/Edit</b></li>
+    <li>Enable with schedule: <b>Friday evening → Monday morning</b></li>
+    <li>Subject: <code>Out of Office: Re: {subject}</code></li>
+    <li>In the message editor toolbar click the <b>&lt;/&gt; HTML</b> icon</li>
+    <li>Select all, delete, then paste everything between the cut lines below</li>
+    <li>Save</li>
+  </ol>
+</div>
 
-  <div class="hint">
-    <b>How to set up in Zoho Mail</b>
-    <ol>
-      <li>Sign in at <code>mail.zoho.com</code> as <code>martinm@primecane.com</code></li>
-      <li>Settings (⚙) → <b>Out of Office</b> → <b>Add/Edit</b></li>
-      <li>Enable with schedule: <b>Friday evening → Monday morning</b></li>
-      <li>Subject: <code>Out of Office: Re: {subject}</code></li>
-      <li>Click the <b>&lt;/&gt; HTML</b> icon in the message editor</li>
-      <li>Paste everything from <code>martinm-primecane-ooo-zoho.html</code> (the file on your Desktop, below the comment block)</li>
-      <li>Save</li>
-    </ol>
-  </div>
+<div class="preview">
+<!-- ═══════════════════════════════════════════════════════════
+     COPY EVERYTHING BETWEEN THE TWO CUT LINES INTO ZOHO MAIL
+     ═══════════════════════════════════════════════════════════ -->
+<!-- ✂ CUT START -->
 
-  <div class="preview">
-
-    <!-- OOO Banner -->
-    <div class="ooo-banner">
-      <div class="ooo-badge">Out of Office</div>
-      <p class="ooo-body">I&rsquo;m out of the office on weekends and will respond on Monday.</p>
-      <div class="ooo-phone">
+<!-- ─────── OOO Banner ─────── -->
+<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"
+  style="border-collapse:separate;border-spacing:0;width:100%;min-width:540px;
+         max-width:620px;background-color:#f5faed;
+         border-left:4px solid #d7df23;border-radius:0 8px 8px 0;
+         margin-bottom:14px;font-family:Arial,Helvetica,sans-serif;">
+  <tr>
+    <td style="padding:16px 20px;">
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:10px;
+                  line-height:14px;font-weight:bold;letter-spacing:1.8px;
+                  text-transform:uppercase;color:#184d2a;padding-bottom:7px;">
+        Out of Office
+      </div>
+      <p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;
+                line-height:21px;color:#3a4a3d;margin:0 0 8px 0;">
+        I&rsquo;m out of the office on weekends and will respond on Monday.
+      </p>
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;
+                  line-height:16px;color:#4a5a4d;">
         Urgent?&nbsp;
-        <a href="tel:+27609664934">+27&nbsp;60&nbsp;966&nbsp;4934</a>
+        <a href="tel:+27609664934"
+           style="color:#163a25;font-weight:bold;text-decoration:none;
+                  white-space:nowrap;">+27&nbsp;60&nbsp;966&nbsp;4934</a>
       </div>
-    </div>
+    </td>
+  </tr>
+</table>
 
-    <!-- Signature Card -->
-    <div class="card">
-      <div class="card-body">
+<!-- ─────── Signature Card ─────── -->
+<style type="text/css">
+@media (prefers-color-scheme:dark){
+  .pc-card{background-color:#122318!important;border-color:#1e3d26!important}
+  .pc-right{background-color:#122318!important}
+  .pc-name{color:#ffffff!important}
+  .pc-title{color:#8ec97a!important}
+  .pc-co{color:#8aab91!important}
+  .pc-email{color:#8ec97a!important}
+  .pc-phone{color:#c8d8c8!important}
+  .pc-web{color:#9abfa6!important}
+  .pc-location{color:#8aab91!important}
+}
+</style>
 
-        <!-- Left panel -->
-        <div class="card-left">
-          <img src="../pc-logo-light.png" alt="Prime Cane (Pvt) Ltd">
-        </div>
-
-        <!-- Right panel -->
-        <div class="card-right">
-          <p class="sig-name">Martin Mufanebadza</p>
-          <p class="sig-title">Executive Chairman &amp; Managing Director</p>
-          <p class="sig-company">Prime Cane (Pvt) Ltd, Sugar Milling &amp; Processing</p>
-
-          <div class="divider"></div>
-
-          <ul class="contacts">
-            <li class="email">
-              <img src="../pc-icon-mail.png" alt="">
-              <a href="mailto:martinm@primecane.com">martinm@primecane.com</a>
-            </li>
-            <li class="phone">
-              <img src="../pc-icon-phone.png" alt="">
-              <span>
-                <a href="tel:+27609664934">+27&nbsp;60&nbsp;966&nbsp;4934</a>
-                <span class="sep">&nbsp;&nbsp;/&nbsp;&nbsp;</span>
-                <a href="tel:+27824403680">+27&nbsp;82&nbsp;440&nbsp;3680</a>
-              </span>
-            </li>
-            <li class="web">
-              <img src="../pc-icon-web.png" alt="">
-              <a href="https://primecane.com">primecane.com</a>
-            </li>
-            <li class="location">
-              <img src="../pc-icon-pin.png" alt="">
-              <span>Chiredzi, Masvingo Province, Zimbabwe</span>
-            </li>
-          </ul>
-
-          <div class="socials">
-            <a href="https://www.linkedin.com/company/primecane" aria-label="LinkedIn">
-              <img src="../pc-social-li.png" alt="LinkedIn">
-            </a>
-            <a href="https://www.facebook.com/primecane" aria-label="Facebook">
-              <img src="../pc-social-fb.png" alt="Facebook">
-            </a>
-            <a href="https://www.instagram.com/primecane" aria-label="Instagram">
-              <img src="../pc-social-ig.png" alt="Instagram">
-            </a>
-            <a href="https://x.com/primecane" aria-label="X">
-              <img src="../pc-social-x.png" alt="X">
-            </a>
-          </div>
-        </div>
-
+<table class="pc-card" border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"
+  style="border-collapse:separate;border-spacing:0;width:100%;min-width:540px;max-width:620px;
+         background-color:#ffffff;border:1px solid #e3e9e1;border-radius:14px;
+         overflow:hidden;font-family:Arial,Helvetica,sans-serif;">
+  <tr>
+    <!-- Left green column with logo -->
+    <td width="160" valign="middle" bgcolor="#184d2a"
+      style="width:160px;vertical-align:middle;background-color:#184d2a;
+             background-image:url('https://primecane.com/email/pc-band.png');
+             background-position:left top;background-repeat:no-repeat;
+             background-size:cover;padding:24px 18px;text-align:center;">
+      <img src="https://primecane.com/email/pc-logo-light.png"
+           alt="Prime Cane (Pvt) Ltd" width="120" height="116"
+           style="display:block;margin:0 auto;border:0;outline:none;
+                  -ms-interpolation-mode:bicubic;width:120px;height:116px;">
+    </td>
+    <!-- Right content column -->
+    <td class="pc-right" valign="top"
+      style="vertical-align:top;background-color:#ffffff;padding:22px 24px 20px 24px;">
+      <!-- Name -->
+      <div class="pc-name"
+        style="font-family:Georgia,'Times New Roman',serif;font-size:19px;
+               line-height:23px;font-weight:bold;color:#163a25;">
+        Martin Mufanebadza
       </div>
-
-      <!-- Bottom strip -->
-      <div class="card-strip">
-        <span class="strip-item">Sugar</span>
-        <span class="strip-dot">&bull;</span>
-        <span class="strip-item">Ethanol</span>
-        <span class="strip-dot">&bull;</span>
-        <span class="strip-item">Molasses</span>
-        <span class="strip-dot">&bull;</span>
-        <span class="strip-item">Cane By-Products</span>
-        <span class="strip-spacer"></span>
-        <span class="strip-tagline">Pure &middot; Natural &middot; Premium</span>
+      <!-- Title -->
+      <div class="pc-title"
+        style="font-family:Arial,Helvetica,sans-serif;font-size:10px;
+               line-height:15px;font-weight:bold;letter-spacing:1.6px;
+               text-transform:uppercase;color:#5c8a45;padding-top:4px;">
+        Executive Chairman &amp; Managing Director
       </div>
-    </div>
-
-  </div>
+      <!-- Company -->
+      <div class="pc-co"
+        style="font-family:Arial,Helvetica,sans-serif;font-size:11px;
+               line-height:15px;color:#7c8c7e;padding-top:2px;">
+        Prime Cane (Pvt) Ltd, Sugar Milling &amp; Processing
+      </div>
+      <!-- Lime divider -->
+      <div style="border-top:2px solid #d7df23;width:42px;font-size:0;
+                  line-height:0;height:2px;margin-top:12px;">&nbsp;</div>
+      <div style="font-size:0;line-height:12px;height:12px;">&nbsp;</div>
+      <!-- Contact rows -->
+      <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+        <tr>
+          <td width="23" valign="middle"
+            style="width:23px;vertical-align:middle;padding:0 9px 7px 0;">
+            <img src="https://primecane.com/email/pc-icon-mail.png"
+                 width="14" height="14" alt=""
+                 style="display:block;border:0;outline:none;width:14px;height:14px;">
+          </td>
+          <td valign="middle" style="vertical-align:middle;padding:0 0 7px 0;">
+            <a href="mailto:martinm@primecane.com" class="pc-email"
+               style="font-family:Arial,Helvetica,sans-serif;font-size:12px;
+                      line-height:16px;color:#236b35;text-decoration:none;
+                      font-weight:bold;">martinm@primecane.com</a>
+          </td>
+        </tr>
+        <tr>
+          <td width="23" valign="middle"
+            style="width:23px;vertical-align:middle;padding:0 9px 7px 0;">
+            <img src="https://primecane.com/email/pc-icon-phone.png"
+                 width="14" height="14" alt=""
+                 style="display:block;border:0;outline:none;width:14px;height:14px;">
+          </td>
+          <td valign="middle" style="vertical-align:middle;padding:0 0 7px 0;">
+            <span style="font-family:Arial,Helvetica,sans-serif;font-size:12px;
+                         line-height:16px;">
+              <a href="tel:+27609664934" class="pc-phone"
+                 style="color:#163a25;text-decoration:none;font-weight:700;">+27&nbsp;60&nbsp;966&nbsp;4934</a>
+              <span style="color:#b3c0b5;">&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+              <a href="tel:+27824403680" class="pc-phone"
+                 style="color:#163a25;text-decoration:none;font-weight:700;">+27&nbsp;82&nbsp;440&nbsp;3680</a>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td width="23" valign="middle"
+            style="width:23px;vertical-align:middle;padding:0 9px 7px 0;">
+            <img src="https://primecane.com/email/pc-icon-web.png"
+                 width="14" height="14" alt=""
+                 style="display:block;border:0;outline:none;width:14px;height:14px;">
+          </td>
+          <td valign="middle" style="vertical-align:middle;padding:0 0 7px 0;">
+            <a href="https://primecane.com" class="pc-web"
+               style="font-family:Arial,Helvetica,sans-serif;font-size:12px;
+                      line-height:16px;color:#3a4a3d;text-decoration:none;">
+              primecane.com
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td width="23" valign="middle"
+            style="width:23px;vertical-align:middle;padding:0 9px 0 0;">
+            <img src="https://primecane.com/email/pc-icon-pin.png"
+                 width="14" height="14" alt=""
+                 style="display:block;border:0;outline:none;width:14px;height:14px;">
+          </td>
+          <td valign="middle" style="vertical-align:middle;padding:0;">
+            <span class="pc-location"
+              style="font-family:Arial,Helvetica,sans-serif;font-size:11px;
+                     line-height:15px;color:#90a092;">
+              Chiredzi, Masvingo Province, Zimbabwe
+            </span>
+          </td>
+        </tr>
+      </table>
+      <!-- Social icons -->
+      <div style="padding-top:10px;font-size:0;line-height:0;">
+        <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+          <tr>
+            <td style="padding-right:11px;">
+              <a href="https://www.linkedin.com/company/primecane" style="text-decoration:none;">
+                <img src="https://primecane.com/email/pc-social-li.png"
+                     width="17" height="17" alt="LinkedIn"
+                     style="display:block;border:0;outline:none;width:17px;height:17px;">
+              </a>
+            </td>
+            <td style="padding-right:11px;">
+              <a href="https://www.facebook.com/primecane" style="text-decoration:none;">
+                <img src="https://primecane.com/email/pc-social-fb.png"
+                     width="17" height="17" alt="Facebook"
+                     style="display:block;border:0;outline:none;width:17px;height:17px;">
+              </a>
+            </td>
+            <td style="padding-right:11px;">
+              <a href="https://www.instagram.com/primecane" style="text-decoration:none;">
+                <img src="https://primecane.com/email/pc-social-ig.png"
+                     width="17" height="17" alt="Instagram"
+                     style="display:block;border:0;outline:none;width:17px;height:17px;">
+              </a>
+            </td>
+            <td>
+              <a href="https://x.com/primecane" style="text-decoration:none;">
+                <img src="https://primecane.com/email/pc-social-x.png"
+                     width="17" height="17" alt="X"
+                     style="display:block;border:0;outline:none;width:17px;height:17px;">
+              </a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </td>
+  </tr>
+  <!-- Bottom strip -->
+  <tr>
+    <td colspan="2" bgcolor="#184d2a"
+      style="background-color:#184d2a;
+             background-image:url('https://primecane.com/email/pc-strip.png');
+             background-position:center center;background-repeat:no-repeat;
+             background-size:cover;padding:12px 24px;">
+      <table border="0" cellpadding="0" cellspacing="0" role="presentation"
+             width="100%" style="width:100%;">
+        <tr>
+          <td style="font-family:Arial,Helvetica,sans-serif;font-size:10px;line-height:14px;
+                     font-weight:bold;letter-spacing:1.4px;text-transform:uppercase;
+                     color:#d7df23;">Sugar</td>
+          <td style="font-family:Arial,Helvetica,sans-serif;font-size:10px;
+                     color:#5f8a52;">&nbsp;&bull;&nbsp;</td>
+          <td style="font-family:Arial,Helvetica,sans-serif;font-size:10px;line-height:14px;
+                     font-weight:bold;letter-spacing:1.4px;text-transform:uppercase;
+                     color:#d7df23;">Ethanol</td>
+          <td style="font-family:Arial,Helvetica,sans-serif;font-size:10px;
+                     color:#5f8a52;">&nbsp;&bull;&nbsp;</td>
+          <td style="font-family:Arial,Helvetica,sans-serif;font-size:10px;line-height:14px;
+                     font-weight:bold;letter-spacing:1.4px;text-transform:uppercase;
+                     color:#d7df23;">Molasses</td>
+          <td style="font-family:Arial,Helvetica,sans-serif;font-size:10px;
+                     color:#5f8a52;">&nbsp;&bull;&nbsp;</td>
+          <td width="100%" style="font-family:Arial,Helvetica,sans-serif;font-size:10px;
+                     line-height:14px;font-weight:bold;letter-spacing:1.4px;
+                     text-transform:uppercase;color:#d7df23;">Cane By-Products</td>
+          <td align="right" style="font-family:Georgia,'Times New Roman',serif;
+                     font-size:11px;line-height:14px;font-style:italic;
+                     color:#bcd49a;white-space:nowrap;">
+            Pure &middot; Natural &middot; Premium
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ✂ CUT END -->
 </div>
 
 </body>
