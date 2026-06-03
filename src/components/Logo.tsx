@@ -26,7 +26,7 @@ export function Logo({
   return (
     <img
       src={variant === "secondary" ? logoSec : logoPrimary}
-      alt="Prime Cane (Pvt) Ltd"
+      alt="Prime Cane Group (Private) Limited"
       width={W}
       height={H}
       className={className}

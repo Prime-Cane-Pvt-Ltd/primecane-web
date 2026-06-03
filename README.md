@@ -1,4 +1,4 @@
-# Prime Cane (Pvt) Ltd — Coming Soon
+# Prime Cane Group (Private) Limited — Coming Soon
 
 A modern, fully-animated single-page "coming soon" site for **primecane.com** — a sugar
 mill in Chiredzi, Zimbabwe. Captures launch-notification signups while the full site is

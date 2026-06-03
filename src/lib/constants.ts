@@ -13,7 +13,7 @@ export const CONTACT = {
 } as const;
 
 export const BRAND = {
-  legalName: "Prime Cane (Pvt) Ltd",
+  legalName: "Prime Cane Group (Private) Limited",
   strapline: "Sustainable Agricultural Solutions",
   promise: ["Pure", "Natural", "Premium"] as const,
 } as const;
@@ -22,7 +22,7 @@ export const HERO = {
   eyebrow: "Sustainable Agricultural Solutions",
   headline: "Zimbabwe's sugar, refined from the ground up.",
   subline:
-    "Prime Cane (Pvt) Ltd is building a modern sugar mill in Chiredzi, processing cane into sugar, ethanol and more. Our website is on its way.",
+    "Prime Cane Group (Private) Limited is building a modern sugar mill in Chiredzi, processing cane into sugar, ethanol and more. Our website is on its way.",
   formIntro: "Be the first to know when we go live.",
   reassurance: "No spam, one email, at launch.",
 } as const;
@@ -78,7 +78,7 @@ export const CHIREDZI = {
 } as const;
 
 export const FOOTER = {
-  legal: `© ${new Date().getFullYear()} Prime Cane (Pvt) Ltd. All rights reserved.`,
+  legal: `© ${new Date().getFullYear()} Prime Cane Group (Private) Limited. All rights reserved.`,
 } as const;
 
 /** Email endpoint — Cloudflare Pages Function by default; overridable via env. */
