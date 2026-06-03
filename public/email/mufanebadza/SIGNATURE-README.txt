@@ -62,4 +62,4 @@ OUTSTANDING ITEMS (confirm before rollout)
     Swap in a Prime Cane / Chiredzi landline if preferred.
 
 
-Generated for Prime Cane Group (Private) Limited — Sustainable Agricultural Solutions.
+Generated for Prime Cane Group — Sustainable Agricultural Solutions.

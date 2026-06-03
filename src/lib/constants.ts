@@ -22,7 +22,7 @@ export const HERO = {
   eyebrow: "Sustainable Agricultural Solutions",
   headline: "Zimbabwe's sugar, refined from the ground up.",
   subline:
-    "Prime Cane Group (Private) Limited is building a modern sugar mill in Chiredzi, processing cane into sugar, ethanol and more. Our website is on its way.",
+    "Prime Cane Group is building a modern sugar mill in Chiredzi, processing cane into sugar, ethanol and more. Our website is on its way.",
   formIntro: "Be the first to know when we go live.",
   reassurance: "No spam, one email, at launch.",
 } as const;

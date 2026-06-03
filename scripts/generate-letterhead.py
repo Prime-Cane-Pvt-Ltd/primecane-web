@@ -1,5 +1,5 @@
 """
-Prime Cane Group (Private) Limited — letterhead .docx generator.
+Prime Cane Group — letterhead .docx generator.
 
 Layered band + monogram design. The header is a three-band masthead
 (deep-green hero band  +  cream eyebrow band  +  hairline lime rule) that
