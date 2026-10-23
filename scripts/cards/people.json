@@ -1,0 +1,34 @@
+{
+  "_readme": [
+    "Digital business card data. scripts/generate-cards.py reads this and nothing else.",
+    "Each person gets public/card/<slug>/index.html, a <slug>.vcf, and a short",
+    "alias (primecane.com/<alias>) written into public/_redirects.",
+    "Only put contact details here that the person has approved for their card."
+  ],
+  "company": {
+    "name": "Prime Cane Group",
+    "legalName": "Prime Cane Group (Private) Limited",
+    "tagline": "Sugar Milling & Processing",
+    "website": "https://primecane.com",
+    "websiteLabel": "primecane.com",
+    "address": {
+      "street": "",
+      "city": "Chiredzi",
+      "region": "Masvingo Province",
+      "postcode": "",
+      "country": "Zimbabwe"
+    }
+  },
+  "baseUrl": "https://primecane.com",
+  "people": [
+    {
+      "slug": "martin-mufanebadza",
+      "alias": "martin",
+      "firstName": "Martin",
+      "lastName": "Mufanebadza",
+      "title": "Executive Chairman & Managing Director",
+      "email": "martinm@primecane.com",
+      "phones": ["+27 60 966 4934", "+27 82 440 3680"]
+    }
+  ]
+}

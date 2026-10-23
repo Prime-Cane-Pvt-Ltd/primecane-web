@@ -10,3 +10,9 @@
 # Hashed, content-addressed build assets — cache hard.
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
+
+# BEGIN generated cards (scripts/generate-cards.py)
+/card/martin-mufanebadza/martin-mufanebadza.vcf
+  Content-Type: text/vcard; charset=utf-8
+  Cache-Control: public, max-age=300
+# END generated cards
