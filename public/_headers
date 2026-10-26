@@ -11,6 +11,16 @@
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
+# Unlisted pages shared by direct link only: keep them out of search
+# engines and caches.
+/p/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: private, max-age=300
+
+/p/*.pptx
+  Content-Type: application/vnd.openxmlformats-officedocument.presentationml.presentation
+  Content-Disposition: attachment; filename="Prime-Cane-Phase-1-Pitch.pptx"
+
 # BEGIN generated cards (scripts/generate-cards.py)
 /card/martin-mufanebadza/martin-mufanebadza.vcf
   Content-Type: text/vcard; charset=utf-8

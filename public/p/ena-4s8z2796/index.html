@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>Prime Cane Group · Phase 1 Pitch</title>
+  <meta name="description" content="Phase 1 Fuel Ethanol and ENA Plant, Mkwasine, Chiredzi. Financing proposal presentation.">
+  <meta name="theme-color" content="#0F2E1A">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <style>
+    @font-face {
+      font-family: "Hanken Grotesk";
+      src: url(/card/assets/fonts/hanken-grotesk.woff2) format("woff2");
+      font-weight: 100 900;
+      font-display: swap;
+    }
+    :root {
+      --deep: #0F2E1A;
+      --green: #184D2A;
+      --lime: #D7DF23;
+      --light: #F6F7F0;
+      --alt: #ECEFE3;
+      --card: #FDFDF9;
+      --ink: #14231A;
+      --soft: #4A5A4F;
+      --soft-dark: #C9D8CC;
+      --line: #D9DED0;
+      --pad: clamp(20px, 6vw, 96px);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-snap-type: y proximity; scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      font-family: "Hanken Grotesk", Arial, sans-serif;
+      background: var(--light);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.4;
+    }
+    .slide {
+      min-height: 100vh;
+      min-height: 100svh;
+      padding: clamp(56px, 9vh, 112px) var(--pad) clamp(64px, 10vh, 120px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: clamp(24px, 4vh, 48px);
+      scroll-snap-align: start;
+      position: relative;
+    }
+    .slide > * { max-width: 1400px; width: 100%; margin-inline: auto; }
+    .light { background: var(--light); }
+    .alt { background: var(--alt); }
+    .dark { background: var(--deep); color: var(--light); }
+    .brand { background: var(--green); color: var(--light); }
+    .cover { background: linear-gradient(135deg, var(--deep), var(--green)); color: var(--light); }
+
+    .eyebrow {
+      font-size: clamp(13px, 1.1vw, 16px);
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+    .dark .eyebrow, .brand .eyebrow, .cover .eyebrow { color: var(--lime); }
+    h1 {
+      font-size: clamp(40px, 7vw, 104px);
+      font-weight: 800;
+      line-height: 1.02;
+      letter-spacing: -.02em;
+      max-width: 1100px;
+      margin-inline: 0;
+    }
+    h2 {
+      font-size: clamp(30px, 4.2vw, 60px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -.01em;
+    }
+    h3 { font-size: clamp(20px, 1.8vw, 26px); font-weight: 800; color: var(--green); }
+    .lead { font-size: clamp(18px, 1.7vw, 24px); color: var(--soft); }
+    .dark .lead, .cover .lead, .brand .lead { color: var(--soft-dark); }
+    .take { font-size: clamp(18px, 1.6vw, 24px); }
+    .note { font-size: 14px; color: var(--soft); }
+    .dark .note, .brand .note, .cover .note { color: var(--soft-dark); }
+
+    .brandrow { display: flex; align-items: center; gap: 16px; }
+    .brandrow img { width: 64px; height: 64px; }
+    .brandrow span { font-weight: 700; letter-spacing: .2em; color: var(--lime); font-size: 15px; }
+    .cover-body { display: flex; flex-direction: column; gap: 28px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+    .pill {
+      display: inline-block;
+      background: var(--lime);
+      color: var(--deep);
+      font-weight: 800;
+      font-size: clamp(16px, 1.5vw, 21px);
+      padding: 16px 28px;
+      border-radius: 999px;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      color: var(--light);
+      border: 1.5px solid rgba(246, 247, 240, .5);
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 16px;
+      text-decoration: none;
+    }
+    .btn:hover, .btn:focus-visible { background: rgba(246, 247, 240, .1); border-color: var(--light); }
+    .btn:focus-visible { outline: 3px solid var(--lime); outline-offset: 3px; }
+
+    .grid { display: grid; gap: clamp(14px, 1.6vw, 24px); }
+    .g3 { grid-template-columns: repeat(3, 1fr); }
+    .g4 { grid-template-columns: repeat(4, 1fr); }
+    .g2 { grid-template-columns: repeat(2, 1fr); }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: clamp(20px, 2.4vw, 36px);
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .card.hi { background: var(--green); border-color: var(--green); color: var(--light); }
+    .card .k { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--green); }
+    .card.hi .k { color: var(--lime); }
+    .big { font-size: clamp(40px, 5vw, 80px); font-weight: 800; line-height: 1; color: var(--green); font-variant-numeric: tabular-nums; }
+    .mid { font-size: clamp(30px, 3.2vw, 48px); font-weight: 800; line-height: 1.05; }
+    .card.hi .big { color: var(--lime); }
+    .card p.l { font-size: clamp(15px, 1.25vw, 19px); color: var(--soft); }
+    .card.hi p.l { color: #E4ECE0; }
+
+    .flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 16px; align-items: center; }
+    .arrow { width: 36px; height: 20px; color: var(--green); }
+
+    .split { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(20px, 3vw, 48px); align-items: start; }
+    table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); font-size: clamp(15px, 1.25vw, 19px); }
+    th { background: var(--green); color: var(--light); text-align: left; padding: 12px 16px; font-weight: 700; }
+    td { padding: 12px 16px; border-top: 1px solid var(--line); }
+    th:last-child, td:last-child { text-align: right; white-space: nowrap; }
+    tr.eq td { background: #E9F0D2; font-weight: 700; }
+    .stack { display: flex; flex-direction: column; gap: 12px; }
+    .mit { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 20px; font-size: clamp(15px, 1.25vw, 19px); }
+
+    .impact .big { color: var(--lime); }
+    .impact .stat { display: flex; flex-direction: column; gap: 12px; }
+    .impact .stat p { color: var(--soft-dark); font-size: clamp(15px, 1.3vw, 20px); }
+    .impact .stat p.big { color: var(--lime); font-size: clamp(40px, 5vw, 80px); }
+
+    .ask .card { background: var(--light); border: none; color: var(--ink); }
+    .ask ul { padding-left: 1.2em; display: flex; flex-direction: column; gap: 10px; font-size: clamp(16px, 1.35vw, 20px); }
+
+    .slide > .pager, .slide > .foot { width: auto; max-width: none; margin: 0; }
+    .pager { position: absolute; right: var(--pad); bottom: 28px; font-size: 14px; opacity: .7; }
+    .foot { position: absolute; left: var(--pad); right: calc(var(--pad) + 56px); bottom: 26px; }
+
+    @media (max-width: 900px) {
+      html { scroll-snap-type: none; }
+      .g3, .g4, .g2, .split { grid-template-columns: 1fr; }
+      .g4 { grid-template-columns: 1fr 1fr; }
+      .flow { grid-template-columns: 1fr; }
+      .arrow { transform: rotate(90deg); justify-self: center; }
+      .slide { min-height: auto; padding-bottom: 48px; }
+      .slide > .foot, .slide > .pager { position: static; }
+      .pager { text-align: right; }
+    }
+    @media (max-width: 480px) { .g4 { grid-template-columns: 1fr; } }
+    @media print {
+      html { scroll-snap-type: none; }
+      .slide { min-height: auto; page-break-after: always; }
+      .btn { display: none; }
+    }
+  </style>
+</head>
+<body>
+<main>
+
+  <section class="slide cover" aria-labelledby="t1">
+    <div class="brandrow"><img src="icon.png" alt="" width="64" height="64"><span>PRIME CANE GROUP</span></div>
+    <div class="cover-body">
+      <p class="eyebrow">Financing proposal · October 2026</p>
+      <h1 id="t1">Turning Mkwasine cane into Zimbabwe’s fuel</h1>
+      <p class="lead">Phase 1 Fuel Ethanol and ENA Plant, Chiredzi District, Masvingo Province</p>
+      <div class="actions">
+        <span class="pill">The ask: a US$20.0M Government-guaranteed term loan</span>
+        <a class="btn" href="Prime-Cane-Phase-1-Pitch.pptx" download>Download PowerPoint</a>
+      </div>
+    </div>
+    <p class="note foot">Prime Cane Group (Private) Limited · Presented to Afreximbank and the Ministry of Lands, Agriculture, Fisheries, Water and Rural Development</p>
+  </section>
+
+  <section class="slide light" aria-labelledby="t2">
+    <p class="eyebrow">The opportunity</p>
+    <h2 id="t2">Zimbabwe must quadruple ethanol output by 2035</h2>
+    <div class="grid g3">
+      <div class="card"><p class="big">155</p><p class="l">million litres a year produced today</p></div>
+      <div class="card"><p class="big">600</p><p class="l">million litres a year: Cabinet’s target for 2035</p></div>
+      <div class="card hi"><p class="big">E20</p><p class="l">blend mandated in 2026, with petrol demand up about 25% a year</p></div>
+    </div>
+    <p class="take">Only two producers supply the blend today. <b>Phase 1 adds 29.2 million litres a year, about 15% of national supply.</b></p>
+    <p class="note foot">Sources: Equity Axis (2026); ZERA via NewsDay; Advanced BioFuels USA</p>
+    <p class="pager" aria-hidden="true">2 / 7</p>
+  </section>
+
+  <section class="slide light" aria-labelledby="t3">
+    <p class="eyebrow">The project</p>
+    <h2 id="t3">Cane already in the ground becomes two products within 24 months</h2>
+    <div class="flow">
+      <div class="card"><p class="k">Feedstock</p><p class="mid">384,000 t</p><p class="l">of cane a year from outgrowers on 60% of Mkwasine’s 8,000 ha</p></div>
+      <svg class="arrow" viewBox="0 0 36 20" aria-hidden="true"><path d="M0 10h28M20 2l8 8-8 8" fill="none" stroke="currentColor" stroke-width="3"/></svg>
+      <div class="card"><p class="k">Modular plant</p><p class="mid">1,750 t/day</p><p class="l">built in 18 to 24 months; first crush in April 2029</p></div>
+      <svg class="arrow" viewBox="0 0 36 20" aria-hidden="true"><path d="M0 10h28M20 2l8 8-8 8" fill="none" stroke="currentColor" stroke-width="3"/></svg>
+      <div class="card hi"><p class="k">Output</p><p class="mid">29.2 ML</p><p class="l">23.3 ML fuel ethanol for E20 and 5.8 ML ENA for spirits and pharma</p></div>
+    </div>
+    <p class="lead">Bagasse powers the plant and spent wash returns to the fields, so no liquid effluent leaves the site.</p>
+    <p class="pager" aria-hidden="true">3 / 7</p>
+  </section>
+
+  <section class="slide alt" aria-labelledby="t4">
+    <p class="eyebrow">The numbers, base case</p>
+    <h2 id="t4">The plant pays its way and repays the loan by 2035</h2>
+    <div class="grid g4">
+      <div class="card"><p class="big">34.3</p><p class="l">US$ million revenue a year at full run</p></div>
+      <div class="card"><p class="big">8.3</p><p class="l">US$ million EBITDA a year</p></div>
+      <div class="card"><p class="big">1.37x</p><p class="l">minimum debt service cover in any year</p></div>
+      <div class="card"><p class="big">27%</p><p class="l">project IRR, unlevered and after tax</p></div>
+    </div>
+    <p class="take">After tax, working capital, maintenance and a six-month debt service reserve. Priced at ZERA’s US$1.10/L for fuel ethanol and import parity of US$1.37/L for ENA.</p>
+    <p class="note foot">Source: Prime Cane Group cash flow model v2, indicative pending EPC quotations</p>
+    <p class="pager" aria-hidden="true">4 / 7</p>
+  </section>
+
+  <section class="slide light" aria-labelledby="t5">
+    <p class="eyebrow">Stress tests</p>
+    <h2 id="t5">Price is the risk to manage, and we have planned for it</h2>
+    <div class="split">
+      <table>
+        <caption class="note" style="caption-side:bottom;text-align:left;padding-top:8px">Each case run through the full cash flow model.</caption>
+        <thead><tr><th scope="col">Case</th><th scope="col">Min debt cover</th></tr></thead>
+        <tbody>
+          <tr><td>Base case</td><td>1.37x</td></tr>
+          <tr><td>Fuel ethanol price down 15%</td><td>0.70x, short</td></tr>
+          <tr><td>Cane at US$60/t</td><td>1.06x</td></tr>
+          <tr><td>Yield 70 L/t, not 76</td><td>0.97x, short</td></tr>
+          <tr><td>Capital cost up 25%</td><td>1.12x</td></tr>
+          <tr class="eq"><td>With 25% sponsor equity</td><td>1.82x</td></tr>
+        </tbody>
+      </table>
+      <div class="stack">
+        <p class="eyebrow">How we protect cover</p>
+        <p class="mit">A price floor in a ZERA-linked offtake</p>
+        <p class="mit">A cane price that moves with the ethanol price</p>
+        <p class="mit">Fixed-price EPC contract with a yield guarantee</p>
+        <p class="mit">ENA at import parity; fuel ethanol as the swing product</p>
+      </div>
+    </div>
+    <p class="pager" aria-hidden="true">5 / 7</p>
+  </section>
+
+  <section class="slide dark impact" aria-labelledby="t6">
+    <p class="eyebrow">Development impact</p>
+    <h2 id="t6">The value stays in the Lowveld and in Zimbabwe</h2>
+    <div class="grid g3">
+      <div class="stat"><p class="big">US$21M</p><p>paid to outgrowers for cane every year, with a shorter haul</p></div>
+      <div class="stat"><p class="big">23 ML</p><p>of imported petrol displaced in the blend each year, saving foreign currency</p></div>
+      <div class="stat"><p class="big">~100</p><p>permanent plant jobs, plus about 50 seasonal roles each crushing season</p></div>
+    </div>
+    <p class="take">Renewable bagasse power, zero liquid discharge, and local ENA in place of imported alcohol.</p>
+    <p class="pager" aria-hidden="true">6 / 7</p>
+  </section>
+
+  <section class="slide brand ask" aria-labelledby="t7">
+    <p class="eyebrow">Our ask</p>
+    <h2 id="t7">Partner with us to reach financial close by Q1 2027</h2>
+    <div class="grid g2">
+      <div class="card">
+        <h3>From Afreximbank</h3>
+        <p class="mid">US$20.0M</p>
+        <p class="l">9-year term loan · 36 months’ principal grace · 12 semi-annual instalments · Government guarantee</p>
+      </div>
+      <div class="card">
+        <h3>From the Ministry</h3>
+        <ul>
+          <li>Endorse the project and support the guarantee application</li>
+          <li>Back an outgrower cane supply framework at Mkwasine</li>
+          <li>Help secure the ZINWA water permit and land tenure</li>
+        </ul>
+      </div>
+    </div>
+    <div class="actions">
+      <a class="btn" href="Prime-Cane-Phase-1-Pitch.pptx" download>Download PowerPoint</a>
+      <a class="btn" href="mailto:martinm@primecane.com">Contact Martin Mufanebadza</a>
+    </div>
+    <p class="note foot">Martin Mufanebadza, Managing Director · Prime Cane Group (Private) Limited · Strictly private and confidential</p>
+    <p class="pager" aria-hidden="true">7 / 7</p>
+  </section>
+
+</main>
+</body>
+</html>
